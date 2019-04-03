@@ -12,65 +12,76 @@
   </div>
   <ion-card color="primary">
     <ion-card-content>
-      <ion-avatar>
-        <img>
-      </ion-avatar>
-      
-      <ion-item class="ion-padding-bottom">
-        <ion-label position="stacked">Nome *</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
 
-      <ion-item class="ion-padding-bottom">
-        <ion-label position="stacked">Sobrenome *</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
+      <form [formGroup]="userForm" (ngSubmit)="submitForm()">
+        <ion-avatar>
+          <img src="assets/imgs/emptyAvatar.png">
+        </ion-avatar>
+        
+        <ion-item class="ion-padding-bottom">
+          <ion-label position="stacked">Nome *</ion-label>
+          <ion-input type="text" formControlName="name"></ion-input>
+        </ion-item>
 
-      <ion-item class="ion-padding-bottom">
-        <ion-label position="stacked">Endereço Comercial *</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
+        <ion-item class="ion-padding-bottom">
+          <ion-label position="stacked">Sobrenome *</ion-label>
+          <ion-input formControlName="lastName"></ion-input>
+        </ion-item>
 
-      <ion-item class="ion-padding-bottom">
-        <ion-label position="stacked">Número *</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
+        <ion-item class="ion-padding">
+          <ion-checkbox></ion-checkbox>
+          <ion-label>Usar foto de perfil</ion-label>
+        </ion-item>
 
-      <ion-item class="ion-padding-bottom">
-        <ion-label position="stacked">Complemento</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
+        <ion-item class="ion-padding-bottom">
+          <ion-label position="stacked">Endereço Comercial *</ion-label>
+          <ion-input formControlName="address"></ion-input>
+        </ion-item>
 
-      <ion-item class="ion-padding-bottom">
-        <ion-label position="stacked">CEP *</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
+        <ion-item class="ion-padding-bottom">
+          <ion-label position="stacked">Número *</ion-label>
+          <ion-input formControlName="addressNumber"></ion-input>
+        </ion-item>
 
-      <ion-item class="ion-padding-bottom">
-        <ion-label position="stacked">Cidade *</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
+        <ion-item class="ion-padding-bottom">
+          <ion-label position="stacked">Complemento</ion-label>
+          <ion-input formControlName="complement"></ion-input>
+        </ion-item>
 
-      <ion-item class="ion-padding-bottom">
-        <ion-label position="stacked">UF *</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
+        <ion-item class="ion-padding-bottom">
+          <ion-label position="stacked">CEP *</ion-label>
+          <ion-input formControlName="zipCode"></ion-input>
+        </ion-item>
 
-      <ion-item class="ion-padding-bottom">
-        <ion-label position="stacked">Tel. Comercial *</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
+        <ion-item class="ion-padding-bottom">
+          <ion-label position="stacked">Cidade *</ion-label>
+          <ion-input formControlName="city"></ion-input>
+        </ion-item>
 
-      <ion-item class="ion-padding-bottom">
-        <ion-label position="stacked">Tel. Celular</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
+        <ion-item class="ion-padding-bottom">
+          <ion-label position="stacked">UF *</ion-label>
+          <ion-input formControlName="uf"></ion-input>
+        </ion-item>
 
-      <ion-item class="ion-padding-bottom"  >
-        <ion-label position="stacked">E-mail *</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
+        <ion-item class="ion-padding-bottom">
+          <ion-label position="stacked">Tel. Comercial *</ion-label>
+          <ion-input formControlName="phone"></ion-input>
+        </ion-item>
 
+        <ion-item class="ion-padding-bottom">
+          <ion-label position="stacked">Tel. Celular</ion-label>
+          <ion-input formControlName="cellphone"></ion-input>
+        </ion-item>
+
+        <ion-item class="ion-padding-bottom"  >
+          <ion-label position="stacked">E-mail *</ion-label>
+          <ion-input formControlName="email"></ion-input>
+        </ion-item>
+
+        * Campos obrigatórios
+
+        <ion-button type="submit">Gerar</ion-button>
+      </form>
     </ion-card-content>
   </ion-card>
 </ion-content>
