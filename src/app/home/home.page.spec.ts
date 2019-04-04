@@ -168,7 +168,7 @@ describe('HomePage', () => {
     expect(errors['pattern']).toBeTruthy();
   });
 
-  it('zipCode field (format 99.999-999) = valid', () => {
+  it('zipCode field (formatt: 99.999-999) = valid', () => {
     let zipCode = component.userForm.controls['zipCode'];
     zipCode.setValue("65.076-420");
     expect(zipCode.valid).toBeTruthy();
@@ -237,7 +237,7 @@ describe('HomePage', () => {
     expect(errors['minlength']).toBeTruthy();
   });
 
-  it('phone field (format: (99) 9999-9999) = valid', () => {
+  it('phone field (formatt: (99) 9999-9999) = valid', () => {
     let phone = component.userForm.controls['phone'];
     phone.setValue("(11) 1111-1111");
     if (phone.errors) {
