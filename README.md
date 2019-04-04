@@ -2,14 +2,10 @@
 
 ## Instalando o projeto
     1. Clonar o projeto
-    2. ```npm install```
+    2. comando: npm install
 
 ## Rodando o projeto
-    ```ionic serve```
+    comando: ionic serve
 
 ## Testando o projeto
-    ```npm run test```
-
-## Buildando o projeto
-    1. Adicionar a plataforma com o comando ```ionic cordova platform add <android/ios>```
-    2. Buildando com o comando ```ionic cordova build <android/ios>```
+    comando: npm run test
