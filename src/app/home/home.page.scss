@@ -5,3 +5,13 @@ ion-button {
 ion-item {
     margin-bottom: 5px;
 }
+
+ion-grid, .end-col {
+    padding: 0;
+}
+
+.start-col {
+    padding-left: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}

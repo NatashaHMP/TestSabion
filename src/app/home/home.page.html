@@ -3,6 +3,11 @@
     <ion-title>
       MEU CARTÃO
     </ion-title>
+    <ion-item  slot="end" no-lines>
+      <ion-avatar>
+        <img src="assets/imgs/emptyAvatar.png">
+      </ion-avatar>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
@@ -16,7 +21,7 @@
         
         <ion-grid>
           <ion-row>
-            <ion-col>
+            <ion-col size="4">
               <ion-avatar>
                 <img src="assets/imgs/emptyAvatar.png">
               </ion-avatar>
@@ -29,10 +34,17 @@
       
               <ion-item>
                 <ion-label position="stacked">Sobrenome *</ion-label>
-                <ion-input formControlName="lastName"></ion-input>
+                <ion-input type="text" formControlName="lastName"></ion-input>
               </ion-item>
       
-              <ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item no-lines>
                 <ion-checkbox></ion-checkbox>
                 <ion-label>Usar foto de perfil</ion-label>
               </ion-item>
@@ -45,49 +57,73 @@
           <ion-input formControlName="address"></ion-input>
         </ion-item>
 
-        <ion-item>
-          <ion-label position="stacked">Número *</ion-label>
-          <ion-input formControlName="addressNumber"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="stacked">Complemento</ion-label>
-          <ion-input formControlName="complement"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="stacked">CEP *</ion-label>
-          <ion-input formControlName="zipCode"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="stacked">Cidade *</ion-label>
-          <ion-input formControlName="city"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="stacked">UF *</ion-label>
-          <ion-input formControlName="uf"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="stacked">Tel. Comercial *</ion-label>
-          <ion-input formControlName="phone"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="stacked">Tel. Celular</ion-label>
-          <ion-input formControlName="cellphone"></ion-input>
-        </ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col class="start-col">
+              <ion-item>
+                <ion-label position="stacked">Número *</ion-label>
+                <ion-input type="number" formControlName="addressNumber"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col class="end-col">
+                <ion-item>
+                  <ion-label position="stacked">Complemento</ion-label>
+                  <ion-input formControlName="complement"></ion-input>
+                </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5" class="start-col">
+              <ion-item>
+                <ion-label position="stacked">CEP *</ion-label>
+                <ion-input [brmasker]="{mask:'00.000-000', len:10}" maxlength="10"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col size="4" class="start-col">
+              <ion-item>
+                <ion-label position="stacked">Cidade *</ion-label>
+                <ion-input formControlName="city"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col class="end-col">
+              <ion-item>
+                <ion-label position="stacked">UF *</ion-label>
+                <ion-input formControlName="uf" maxlength="2"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="start-col">
+              <ion-item>
+                <ion-label position="stacked">Tel. Comercial *</ion-label>
+                <ion-input type="text" [brmasker]="{phone: true, len: 10}" maxlength="14"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col class="end-col">
+              <ion-item>
+                <ion-label position="stacked">Tel. Celular</ion-label>
+                <ion-input [brmasker]="{phone: true, len: 11}" maxlength="15"></ion-input>
+              </ion-item>          
+            </ion-col>
+          </ion-row>
+        </ion-grid>
 
         <ion-item>
           <ion-label position="stacked">E-mail *</ion-label>
-          <ion-input formControlName="email"></ion-input>
+          <ion-input type="email" formControlName="email"></ion-input>
         </ion-item>
 
-        * Campos obrigatórios
-
-        <ion-button type="submit" fill="outline" color="secondary">GERAR</ion-button>
+        <ion-grid>
+          <ion-row>
+            <ion-col class="start-col">
+              * Campos obrigatórios
+            </ion-col>
+            <ion-col class="start-col">
+              <ion-button type="submit" fill="outline" color="secondary"  end>GERAR</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        
       </form>
     </ion-card-content>
   </ion-card>
