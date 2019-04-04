@@ -1,57 +1,64 @@
 <ion-header>
   <ion-toolbar>
+
     <ion-title>
       MEU CARTÃO
     </ion-title>
+
     <ion-item  slot="end" lines="none">
       <ion-avatar>
-        <img src="assets/imgs/emptyAvatar.png">
+        <img [src]="perfilImageUrl">
       </ion-avatar>
     </ion-item>
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
   <div class="textInfo ion-padding ion-text-center">
     Insira seus dados para gerar seu cartão de visita.
   </div>
+
   <ion-card color="primary">
     <ion-card-content>
+
       <form [formGroup]="userForm" (ngSubmit)="submitForm()">
         
         <ion-grid>
           <ion-row>
+
             <ion-col size="3.5">
-              <ion-avatar>
-                <img src="assets/imgs/emptyAvatar.png">
+              <ion-avatar (click)="changeImage()">
+                <img [src]="imageUrl">
               </ion-avatar>
             </ion-col>
+
             <ion-col class="name-col">
               <ion-item lines="none">
-                <!-- <ion-label position="stacked">Nome *</ion-label> -->
                 <ion-input type="text" placeholder="Nome *" formControlName="name"></ion-input>
               </ion-item>
       
               <ion-item lines="none">
-                <!-- <ion-label position="stacked">Sobrenome *</ion-label> -->
                 <ion-input type="text" placeholder="Sobrenome *" formControlName="lastName"></ion-input>
               </ion-item>
       
             </ion-col>
+
           </ion-row>
           <ion-row>
             <ion-col class="checkbox-col" offset="3" color="primary">
               <ion-item class="checkbox-item" lines="none">
-                <ion-checkbox></ion-checkbox>
+                <ion-checkbox formControlName="useAvatarPicture"></ion-checkbox>
                 <ion-label class="labelCheckbox">Usar foto de perfil</ion-label>
               </ion-item>
             </ion-col>
           </ion-row>
 
-        <ion-item lines="none">
-          <ion-label position="stacked">Endereço Comercial *</ion-label>
-          <ion-input type="text" formControlName="address"></ion-input>
-        </ion-item>
+          <ion-item lines="none">
+            <ion-label position="stacked">Endereço Comercial *</ion-label>
+            <ion-input type="text" formControlName="address"></ion-input>
+          </ion-item>
 
           <ion-row>
             <ion-col class="start-col">
@@ -60,6 +67,7 @@
                 <ion-input type="number" formControlName="addressNumber"></ion-input>
               </ion-item>
             </ion-col>
+
             <ion-col class="end-col">
                 <ion-item lines="none">
                   <ion-label position="stacked">Complemento</ion-label>
@@ -67,6 +75,7 @@
                 </ion-item>
             </ion-col>
           </ion-row>
+
           <ion-row>
             <ion-col size="5" class="start-col">
               <ion-item lines="none">
@@ -74,12 +83,14 @@
                 <ion-input type="text" formControlName="zipCode" [brmasker]="{form: userForm.get('zipCode'), mask:'00.000-000', len:10}" maxlength="10"></ion-input>
               </ion-item>
             </ion-col>
+
             <ion-col size="4" class="start-col">
               <ion-item lines="none">
                 <ion-label position="stacked">Cidade *</ion-label>
                 <ion-input type="text" formControlName="city"></ion-input>
               </ion-item>
             </ion-col>
+
             <ion-col class="end-col">
               <ion-item lines="none">
                 <ion-label position="stacked">UF *</ion-label>
@@ -87,6 +98,7 @@
               </ion-item>
             </ion-col>
           </ion-row>
+
           <ion-row>
             <ion-col class="start-col">
               <ion-item lines="none">
@@ -94,6 +106,7 @@
                 <ion-input type="tel" formControlName="phone" [brmasker]="{form: userForm.get('phone'), phone: true, len: 10}" maxlength="14"></ion-input>
               </ion-item>
             </ion-col>
+
             <ion-col class="end-col">
               <ion-item lines="none">
                 <ion-label position="stacked">Tel. Celular</ion-label>
@@ -102,22 +115,23 @@
             </ion-col>
           </ion-row>
 
-        <ion-item lines="none">
-          <ion-label position="stacked">E-mail *</ion-label>
-          <ion-input type="email" formControlName="email"></ion-input>
-        </ion-item>
+          <ion-item lines="none">
+            <ion-label position="stacked">E-mail *</ion-label>
+            <ion-input type="email" formControlName="email"></ion-input>
+          </ion-item>
 
           <ion-row>
             <ion-col size="7.9" class="start-col requiredMessage">
               * Campos obrigatórios
             </ion-col>
+
             <ion-col class="start-col">
-                <ion-button type="submit" fill="outline" color="light">GERAR</ion-button>
+                <ion-button type="submit" fill="outline" color="light" [disabled]="!userForm.valid">GERAR</ion-button>
             </ion-col>
           </ion-row>
         </ion-grid>
-        
       </form>
+
     </ion-card-content>
   </ion-card>
 </ion-content>
