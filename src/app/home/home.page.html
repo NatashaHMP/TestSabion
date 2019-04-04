@@ -126,12 +126,12 @@
             </ion-col>
 
             <ion-col class="start-col">
-                <ion-button type="submit" fill="outline" color="light">GERAR</ion-button>
+                <ion-button type="submit" fill="outline" color="light" [disabled]="!userForm.valid">GERAR</ion-button>
             </ion-col>
           </ion-row>
         </ion-grid>
       </form>
-      
+
     </ion-card-content>
   </ion-card>
 </ion-content>

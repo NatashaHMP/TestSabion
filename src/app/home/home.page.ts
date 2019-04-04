@@ -9,11 +9,16 @@ import { ImagePicker } from '@ionic-native/image-picker/ngx';
   styleUrls: ['home.page.scss']
 })
 export class HomePage {
-  public userForm : FormGroup;
-  public phonePattern = "\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$";
-  public imageUrl = "assets/imgs/emptyAvatar.png";
-  public perfilImageUrl = "assets/imgs/emptyAvatar.png";
-  public usePerfilImage: boolean = false;
+  public userForm: FormGroup;
+
+  public imageUrl: string = "assets/imgs/emptyAvatar.png";
+  public perfilImageUrl: string = "assets/imgs/emptyAvatar.png";
+
+  public patternLetters = "[a-zA-Z]+";
+  public patternNumbers = "^[1-9][0-9]*$";
+  public patternZipCode = "^[0-9]{2}[.][0-9]{3}[-][0-9]{3}$";    //99.999-999
+  public patternPhone = "^[(][0-9]{2}[)][ ][0-9]{4}[-][0-9]{4}$";    //(99) 9999-9999
+  public patternCellphone = "^[(][0-9]{2}[)][ ][0-9]{5}[-][0-9]{4}$";    //(99) 99999-9999
 
   constructor(
     private formBuilder: FormBuilder, 
@@ -21,16 +26,16 @@ export class HomePage {
     private imagePicker: ImagePicker
   ) {
     this.userForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.pattern("[a-zA-Z]+")]],
-      lastName: ['', [Validators.required, Validators.pattern("[a-zA-Z]+")]],
+      name: ['', [Validators.required, Validators.pattern(this.patternLetters)]],
+      lastName: ['', [Validators.required, Validators.pattern(this.patternLetters)]],
       address: ['', Validators.required],
-      addressNumber: ['', [Validators.required, Validators.pattern("^[1-9][0-9]*$")]],
+      addressNumber: ['', [Validators.required, Validators.pattern(this.patternNumbers)]],
       complement: [''],
-      zipCode: ['', [Validators.required, Validators.pattern("^[0-9]{2}[.][0-9]{3}[-][0-9]{3}$"), Validators.minLength(8)]],
+      zipCode: ['', [Validators.required, Validators.pattern(this.patternZipCode), Validators.minLength(8)]],
       city: ['', Validators.required],
-      uf: ['', [Validators.required, Validators.minLength(2), Validators.pattern("[a-zA-Z]+")]],
-      phone: ['', [Validators.required, Validators.pattern("^[(][0-9]{2}[)][ ][0-9]{4}[-][0-9]{4}$"), Validators.minLength(10)]],
-      cellphone: ['', [Validators.pattern("^[(][0-9]{2}[)][ ][0-9]{5}[-][0-9]{4}$"), Validators.minLength(11)]],
+      uf: ['', [Validators.required, Validators.minLength(2), Validators.pattern(this.patternLetters)]],
+      phone: ['', [Validators.required, Validators.pattern(this.patternPhone), Validators.minLength(10)]],
+      cellphone: ['', [Validators.pattern(this.patternCellphone), Validators.minLength(11)]],
       email: ['', [Validators.required, Validators.email]],
       useAvatarPicture: [false]
     });
@@ -46,19 +51,10 @@ export class HomePage {
     }, (err) => { });
   }
 
-  async showErrorAlert() {
+  async showAlert(message) {
     const alert = await this.alertController.create({
-      message: 'Erro ao enviar o formulário',
+      message: message,
       buttons: ['Ok']
-    });
-
-    await alert.present();
-  }
-
-  async showSuccessAlert() {
-    const alert = await this.alertController.create({
-      message: 'Formulário enviado com sucesso',
-      buttons: ['Okay']
     });
 
     await alert.present();
@@ -66,8 +62,6 @@ export class HomePage {
 
   submitForm() {
     if (!this.userForm.valid) {
-      console.log(this.userForm);
-      this.showErrorAlert();
       return;
     }
 
@@ -75,6 +69,6 @@ export class HomePage {
       this.perfilImageUrl = this.imageUrl;
     }
 
-    this.showSuccessAlert();
+    this.showAlert("Cadastro realizado com sucesso!");
   } 
 }
