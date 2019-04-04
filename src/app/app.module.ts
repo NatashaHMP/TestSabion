@@ -9,6 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrMaskerModule } from 'br-mask';
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +23,7 @@ import { BrMaskerModule } from 'br-mask';
   providers: [
     StatusBar,
     SplashScreen,
+    ImagePicker,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

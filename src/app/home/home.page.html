@@ -5,7 +5,7 @@
     </ion-title>
     <ion-item  slot="end" lines="none">
       <ion-avatar>
-        <img src="assets/imgs/emptyAvatar.png">
+        <img [src]="imageUrl">
       </ion-avatar>
     </ion-item>
   </ion-toolbar>
@@ -22,8 +22,8 @@
         <ion-grid>
           <ion-row>
             <ion-col size="3.5">
-              <ion-avatar>
-                <img src="assets/imgs/emptyAvatar.png">
+              <ion-avatar (click)="changeImage()">
+                <img [src]="imageUrl">
               </ion-avatar>
             </ion-col>
             <ion-col class="name-col">
