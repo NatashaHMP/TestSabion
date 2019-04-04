@@ -21,8 +21,8 @@ export class HomePage {
     private imagePicker: ImagePicker
   ) {
     this.userForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      lastName: ['', Validators.required],
+      name: ['', [Validators.required, Validators.pattern("[a-zA-Z]+")]],
+      lastName: ['', [Validators.required, Validators.pattern("[a-zA-Z]+")]],
       address: ['', Validators.required],
       addressNumber: ['', [Validators.required, Validators.pattern("^[1-9][0-9]*$")]],
       complement: [''],
