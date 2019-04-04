@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
-import { BrMaskerModule } from 'brmasker-ionic-3';
+import { BrMaskerModule } from 'br-mask';
 
 @NgModule({
   imports: [
