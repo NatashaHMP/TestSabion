@@ -9,7 +9,6 @@ import { AlertController } from '@ionic/angular';
 })
 export class HomePage {
   public userForm : FormGroup;
-
   public phonePattern = "\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$";
 
   constructor(private formBuilder: FormBuilder, public alertController: AlertController) {
@@ -19,11 +18,11 @@ export class HomePage {
       address: ['', Validators.required],
       addressNumber: ['', [Validators.required, Validators.pattern("^(0|[1-9][0-9]*)$")]],
       complement: [''],
-      zipCode: ['', Validators.required],
+      zipCode: ['', [Validators.required, Validators.pattern("^(0|[1-9][0-9]*)$"), Validators.minLength(8)]],
       city: ['', Validators.required],
       uf: ['', [Validators.required, Validators.minLength(2), Validators.pattern("[a-zA-Z]+")]],
-      phone: ['', [Validators.required, Validators.pattern(this.phonePattern)]],
-      cellphone: [''],
+      phone: ['', [Validators.required, Validators.pattern("^(0|[1-9][0-9]*)$"), Validators.minLength(10)]],
+      cellphone: ['', [Validators.pattern("^(0|[1-9][0-9]*)$"), Validators.minLength(11)]],
       email: ['', [Validators.required, Validators.email]]
     });
   }
