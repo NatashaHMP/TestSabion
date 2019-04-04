@@ -50,14 +50,63 @@ describe('HomePage', () => {
     expect(component.userForm.valid).toBeFalsy();
   });
 
-  it('complement field not required', () => {
+  it('name field (number) = invalid', () => {
+    let errors = {};
+    let field = component.userForm.controls['name'];
+    field.setValue("13342");
+    errors = field.errors || {};
+    expect(errors['pattern']).toBeTruthy();
+  });
+
+  it('name field (special characters, letters) = invalid', () => {
+    let errors = {};
+    let field = component.userForm.controls['name'];
+    field.setValue("Skfj^-$");
+    errors = field.errors || {};
+    expect(errors['pattern']).toBeTruthy();
+  });
+
+  it('name field (number, letters, special characters) = invalid', () => {
+    let errors = {};
+    let field = component.userForm.controls['name'];
+    field.setValue("13342dsdS");
+    errors = field.errors || {};
+    expect(errors['pattern']).toBeTruthy();
+  });
+
+  it('lastName field (number) = invalid', () => {
+    let errors = {};
+    let field = component.userForm.controls['lastName'];
+    field.setValue("13342");
+    errors = field.errors || {};
+    expect(errors['pattern']).toBeTruthy();
+  });
+
+  it('lastName field (special characters, letters) = invalid', () => {
+    let errors = {};
+    let field = component.userForm.controls['lastName'];
+    field.setValue("Skfj^-$");
+    errors = field.errors || {};
+    expect(errors['pattern']).toBeTruthy();
+  });
+
+  it('lastName field (number, letters, special characters) = invalid', () => {
+    let errors = {};
+    let field = component.userForm.controls['lastName'];
+    field.setValue("13342dsdS");
+    errors = field.errors || {};
+    expect(errors['pattern']).toBeTruthy();
+  });
+
+  it('complement field (not required) = valid', () => {
     let errors = {};
     let field = component.userForm.controls['complement'];
+    field.setValue("13342dsidjS");
     errors = field.errors || {};
     expect(errors['required']).toBeFalsy();
   });
 
-  it('cellphone field not required', () => {
+  it('cellphone field (not required) = valid', () => {
     let errors = {};
     let field = component.userForm.controls['cellphone'];
     errors = field.errors || {};
@@ -65,7 +114,7 @@ describe('HomePage', () => {
   });
 
   nameFieldsRequired.forEach(name => {
-    it(name + ' field required', () => {
+    it(name + ' field (required) = valid', () => {
       let errors = {};
       let field = component.userForm.controls[name];
       errors = field.errors || {};
@@ -74,20 +123,20 @@ describe('HomePage', () => {
   });
 
   nameFieldsSimple.forEach(name => {
-    it(name + ' field valid', () => {
+    it(name + ' field (letters) = valid', () => {
       let field = component.userForm.controls[name];
       field.setValue("Test");
       expect(field.valid).toBeTruthy();
     });
   });
 
-  it('addressNumber field valid', () => {
+  it('addressNumber field (number) = valid', () => {
     let field = component.userForm.controls['addressNumber'];
     field.setValue("123");
     expect(field.valid).toBeTruthy();
   });
 
-  it('addressNumber field not number invalid', () => {
+  it('addressNumber field (not number) = invalid', () => {
     let errors = {};
     let field = component.userForm.controls['addressNumber'];
     field.setValue("test")
@@ -95,7 +144,7 @@ describe('HomePage', () => {
     expect(errors['pattern']).toBeTruthy();
   });
 
-  it('addressNumber field not number with number invalid', () => {
+  it('addressNumber field (letters with number) = invalid', () => {
     let errors = {};
     let field = component.userForm.controls['addressNumber'];
     field.setValue("test234")
@@ -103,7 +152,7 @@ describe('HomePage', () => {
     expect(errors['pattern']).toBeTruthy();
   });
 
-  it('addressNumber field with "," invalid', () => {
+  it('addressNumber field (with ",") = invalid', () => {
     let errors = {};
     let field = component.userForm.controls['addressNumber'];
     field.setValue("12,3")
@@ -111,7 +160,7 @@ describe('HomePage', () => {
     expect(errors['pattern']).toBeTruthy();
   });
 
-  it('addressNumber field with "." invalid', () => {
+  it('addressNumber field (with ".") = invalid', () => {
     let errors = {};
     let field = component.userForm.controls['addressNumber'];
     field.setValue("12.3")
@@ -119,13 +168,13 @@ describe('HomePage', () => {
     expect(errors['pattern']).toBeTruthy();
   });
 
-  it('zipCode field valid', () => {
+  it('zipCode field (format 99.999-999) = valid', () => {
     let zipCode = component.userForm.controls['zipCode'];
     zipCode.setValue("65.076-420");
     expect(zipCode.valid).toBeTruthy();
   });
 
-  it('zipCode field not number error', () => {
+  it('zipCode field (not number) = invalid', () => {
     let errors = {};
     let field = component.userForm.controls['zipCode'];
     field.setValue("test")
@@ -133,7 +182,7 @@ describe('HomePage', () => {
     expect(errors['pattern']).toBeTruthy();
   });
 
-  it('zipCode field not number with number error', () => {
+  it('zipCode field (letters with numbers) = invalid', () => {
     let errors = {};
     let field = component.userForm.controls['zipCode'];
     field.setValue("test1232")
@@ -141,7 +190,7 @@ describe('HomePage', () => {
     expect(errors['pattern']).toBeTruthy();
   });
 
-  it('zipCode field minLength invalid', () => {
+  it('zipCode field (< minLength) = invalid', () => {
     let errors = {};
     let field = component.userForm.controls['zipCode'];
     field.setValue("24687")
@@ -149,7 +198,7 @@ describe('HomePage', () => {
     expect(errors['minlength']).toBeTruthy();
   });
 
-  it('zipCode field with "." invalid', () => {
+  it('zipCode field (with ".") = invalid', () => {
     let errors = {};
     let field = component.userForm.controls['zipCode'];
     field.setValue("650764.0")
@@ -157,7 +206,7 @@ describe('HomePage', () => {
     expect(errors['pattern']).toBeTruthy();
   });
 
-  it('zipCode field with "," invalid', () => {
+  it('zipCode field (with ",") = invalid', () => {
     let errors = {};
     let field = component.userForm.controls['zipCode'];
     field.setValue("650764,0")
@@ -165,13 +214,13 @@ describe('HomePage', () => {
     expect(errors['pattern']).toBeTruthy();
   });
 
-  it('uf field valid', () => {
+  it('uf field (2 letters) = valid', () => {
     let uf = component.userForm.controls['uf'];
     uf.setValue("sp");
     expect(uf.valid).toBeTruthy();
   });
 
-  it('uf field is number error', () => {
+  it('uf field (number) = invalid', () => {
     let errors = {};
     let field = component.userForm.controls['uf'];
     field.setValue("12")
@@ -179,7 +228,7 @@ describe('HomePage', () => {
     expect(errors['pattern']).toBeTruthy();
   });
 
-  it('uf field min length error', () => {
+  it('uf field (< minlength) = invalid', () => {
     let errors = {};
     let field = component.userForm.controls['uf'];
     field.setValue("S")
@@ -188,7 +237,7 @@ describe('HomePage', () => {
     expect(errors['minlength']).toBeTruthy();
   });
 
-  it('phone field valid', () => {
+  it('phone field (format: (99) 9999-9999) = valid', () => {
     let phone = component.userForm.controls['phone'];
     phone.setValue("(11) 1111-1111");
     if (phone.errors) {
@@ -197,16 +246,7 @@ describe('HomePage', () => {
     expect(phone.valid).toBeTruthy();
   });
 
-  it('phone field with 0 valid', () => {
-    let phone = component.userForm.controls['phone'];
-    phone.setValue("(01) 0001-0001");
-    if (phone.errors) {
-      console.log(phone.errors);
-    }
-    expect(phone.valid).toBeTruthy();
-  });
-
-  it('phone field not valid', () => {
+  it('phone field (letters) = invalid', () => {
     let errors = {};
     let field = component.userForm.controls['phone'];
     field.setValue("rer")
@@ -214,23 +254,15 @@ describe('HomePage', () => {
     expect(errors['pattern']).toBeTruthy();
   });
 
-  it('phone field with "." not valid', () => {
+  it('phone field (number without format) = invalid', () => {
     let errors = {};
     let field = component.userForm.controls['phone'];
-    field.setValue("11111.1111")
+    field.setValue("111111111")
     errors = field.errors || {};
     expect(errors['pattern']).toBeTruthy();
   });
 
-  it('phone field with "," not valid', () => {
-    let errors = {};
-    let field = component.userForm.controls['phone'];
-    field.setValue("11111,1111")
-    errors = field.errors || {};
-    expect(errors['pattern']).toBeTruthy();
-  });
-
-  it('phone field invalid min length', () => {
+  it('phone field (< minlength) = invalid', () => {
     let errors = {};
     let field = component.userForm.controls['phone'];
     field.setValue("11111")
@@ -238,7 +270,7 @@ describe('HomePage', () => {
     expect(errors['minlength']).toBeTruthy();
   });
 
-  it('cellphone field valid', () => {
+  it('cellphone field (formatt: (99) 99999-9999) = valid', () => {
     let phone = component.userForm.controls['cellphone'];
     phone.setValue("(11) 11111-1111");
     if (phone.errors) {
@@ -247,16 +279,7 @@ describe('HomePage', () => {
     expect(phone.valid).toBeTruthy();
   });
 
-  it('cellphone field with 0 valid', () => {
-    let phone = component.userForm.controls['cellphone'];
-    phone.setValue("(01) 00001-0001");
-    if (phone.errors) {
-      console.log(phone.errors);
-    }
-    expect(phone.valid).toBeTruthy();
-  });
-
-  it('cellphone field not valid', () => {
+  it('cellphone field (letters) = invalid', () => {
     let errors = {};
     let field = component.userForm.controls['cellphone'];
     field.setValue("rer")
@@ -264,23 +287,15 @@ describe('HomePage', () => {
     expect(errors['pattern']).toBeTruthy();
   });
 
-  it('cellphone field with "." not valid', () => {
+  it('cellphone field (number withou formatt) = invalid', () => {
     let errors = {};
     let field = component.userForm.controls['cellphone'];
-    field.setValue("11111111.11")
+    field.setValue("1111111111")
     errors = field.errors || {};
     expect(errors['pattern']).toBeTruthy();
   });
 
-  it('cellphone field with "," not valid', () => {
-    let errors = {};
-    let field = component.userForm.controls['cellphone'];
-    field.setValue("11111111,11")
-    errors = field.errors || {};
-    expect(errors['pattern']).toBeTruthy();
-  });
-
-  it('cellphone field invalid min length', () => {
+  it('cellphone field (< minlength) = invalid', () => {
     let errors = {};
     let field = component.userForm.controls['cellphone'];
     field.setValue("1111111")
@@ -288,13 +303,13 @@ describe('HomePage', () => {
     expect(errors['minlength']).toBeTruthy();
   });
 
-  it('email field valid', () => {
+  it('email field (formatt: email) = valid', () => {
     let email = component.userForm.controls['email'];
     email.setValue("test@test.com");
     expect(email.valid).toBeTruthy();
   });
 
-  it('email field not have @', () => {
+  it('email field (without formatt) = invalid', () => {
     let errors = {};
     let field = component.userForm.controls['email'];
     field.setValue("12345")
