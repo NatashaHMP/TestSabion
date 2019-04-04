@@ -1,29 +1,30 @@
-ion-title {
-    font-size: 15px;
-    font-weight: bold;
+ion-button, .labelCheckbox, .requiredMessage {
+    font-size: 12px;
 }
 
-.textInfo {
+ion-title, .textInfo {
     font-size: 15px;
-    margin-top: 20px;
-    margin-bottom: 20px;
 }
 
-.checkbox-col {
+ion-grid, .end-col {
+    padding: 0;
+}
+
+.checkbox-col, .start-col {
     padding-top: 0;
-    margin-bottom: 10px;
 }
 
-.checkbox-item {
-    --background: #3b4781;
+.name-col, .start-col {
+    padding-bottom: 0;
+}
+
+ion-title {
+    font-weight: bold;
 }
 
 ion-checkbox {
     --border-color: #f4f5f8;
-}
-
-.name-col {
-    padding-bottom: 0;
+    margin-right: 10px;
 }
 
 ion-card-content {
@@ -38,29 +39,23 @@ ion-item {
     margin-bottom: 5px;
 }
 
-ion-grid, .end-col {
-    padding: 0;
+.textInfo {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.checkbox-col {
+    margin-bottom: 10px;
+}
+
+.checkbox-item {
+    --background: #3b4781;
 }
 
 .start-col {
     padding-left: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-}
-
-.labelCheckbox {
-    font-size: 12px;
-}
-
-ion-checkbox {
-    margin-right: 10px;
-}
-
-ion-button {
-    font-size: 12px;
 }
 
 .requiredMessage {
     margin-top: 5px;
-    font-size: 12px;
 }
