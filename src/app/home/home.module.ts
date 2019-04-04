@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
+import { BrMaskerModule } from 'brmasker-ionic-3';
 
 @NgModule({
   imports: [
@@ -12,6 +13,7 @@ import { HomePage } from './home.page';
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
+    BrMaskerModule,
     RouterModule.forChild([
       {
         path: '',
