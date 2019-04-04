@@ -31,7 +31,8 @@ export class HomePage {
       uf: ['', [Validators.required, Validators.minLength(2), Validators.pattern("[a-zA-Z]+")]],
       phone: ['', [Validators.required, Validators.pattern("^[(][0-9]{2}[)][ ][0-9]{4}[-][0-9]{4}$"), Validators.minLength(10)]],
       cellphone: ['', [Validators.pattern("^[(][0-9]{2}[)][ ][0-9]{5}[-][0-9]{4}$"), Validators.minLength(11)]],
-      email: ['', [Validators.required, Validators.email]]
+      email: ['', [Validators.required, Validators.email]],
+      useAvatarPicture: [false]
     });
   }
 
@@ -70,7 +71,7 @@ export class HomePage {
       return;
     }
 
-    if (this.usePerfilImage) {
+    if (this.userForm.controls['useAvatarPicture'].value) {
       this.perfilImageUrl = this.imageUrl;
     }
 

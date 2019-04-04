@@ -28,12 +28,10 @@
             </ion-col>
             <ion-col class="name-col">
               <ion-item lines="none">
-                <!-- <ion-label position="stacked">Nome *</ion-label> -->
                 <ion-input type="text" placeholder="Nome *" formControlName="name"></ion-input>
               </ion-item>
       
               <ion-item lines="none">
-                <!-- <ion-label position="stacked">Sobrenome *</ion-label> -->
                 <ion-input type="text" placeholder="Sobrenome *" formControlName="lastName"></ion-input>
               </ion-item>
       
@@ -42,7 +40,7 @@
           <ion-row>
             <ion-col class="checkbox-col" offset="3" color="primary">
               <ion-item class="checkbox-item" lines="none">
-                <ion-checkbox [(ngModel)]="usePerfilImage" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+                <ion-checkbox formControlName="useAvatarPicture"></ion-checkbox>
                 <ion-label class="labelCheckbox">Usar foto de perfil</ion-label>
               </ion-item>
             </ion-col>
