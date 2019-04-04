@@ -5,7 +5,7 @@
     </ion-title>
     <ion-item  slot="end" lines="none">
       <ion-avatar>
-        <img [src]="imageUrl">
+        <img [src]="perfilImageUrl">
       </ion-avatar>
     </ion-item>
   </ion-toolbar>
@@ -42,7 +42,7 @@
           <ion-row>
             <ion-col class="checkbox-col" offset="3" color="primary">
               <ion-item class="checkbox-item" lines="none">
-                <ion-checkbox></ion-checkbox>
+                <ion-checkbox [(ngModel)]="usePerfilImage" [ngModelOptions]="{standalone: true}"></ion-checkbox>
                 <ion-label class="labelCheckbox">Usar foto de perfil</ion-label>
               </ion-item>
             </ion-col>

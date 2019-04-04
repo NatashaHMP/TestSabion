@@ -12,6 +12,8 @@ export class HomePage {
   public userForm : FormGroup;
   public phonePattern = "\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$";
   public imageUrl = "assets/imgs/emptyAvatar.png";
+  public perfilImageUrl = "assets/imgs/emptyAvatar.png";
+  public usePerfilImage: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder, 
@@ -66,6 +68,10 @@ export class HomePage {
       console.log(this.userForm);
       this.showErrorAlert();
       return;
+    }
+
+    if (this.usePerfilImage) {
+      this.perfilImageUrl = this.imageUrl;
     }
 
     this.showSuccessAlert();
