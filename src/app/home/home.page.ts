@@ -16,13 +16,13 @@ export class HomePage {
       name: ['', Validators.required],
       lastName: ['', Validators.required],
       address: ['', Validators.required],
-      addressNumber: ['', [Validators.required, Validators.pattern("^(0|[1-9][0-9]*)$")]],
+      addressNumber: ['', [Validators.required, Validators.pattern("^[1-9][0-9]*$")]],
       complement: [''],
-      zipCode: ['', [Validators.required, Validators.pattern("^(0|[1-9][0-9]*)$"), Validators.minLength(8)]],
+      zipCode: ['', [Validators.required, Validators.pattern("^[0-9]{2}[.][0-9]{3}[-][0-9]{3}$"), Validators.minLength(8)]],
       city: ['', Validators.required],
       uf: ['', [Validators.required, Validators.minLength(2), Validators.pattern("[a-zA-Z]+")]],
-      phone: ['', [Validators.required, Validators.pattern("^(0|[1-9][0-9]*)$"), Validators.minLength(10)]],
-      cellphone: ['', [Validators.pattern("^(0|[1-9][0-9]*)$"), Validators.minLength(11)]],
+      phone: ['', [Validators.required, Validators.pattern("^[(][0-9]{2}[)][ ][0-9]{4}[-][0-9]{4}$"), Validators.minLength(10)]],
+      cellphone: ['', [Validators.pattern("^[(][0-9]{2}[)][ ][0-9]{5}[-][0-9]{4}$"), Validators.minLength(11)]],
       email: ['', [Validators.required, Validators.email]]
     });
   }
@@ -47,6 +47,7 @@ export class HomePage {
 
   submitForm() {
     if (!this.userForm.valid) {
+      console.log(this.userForm);
       this.showErrorAlert();
       return;
     }

@@ -54,7 +54,7 @@
 
         <ion-item>
           <ion-label position="stacked">Endereço Comercial *</ion-label>
-          <ion-input formControlName="address"></ion-input>
+          <ion-input type="text" formControlName="address"></ion-input>
         </ion-item>
 
         <ion-grid>
@@ -68,7 +68,7 @@
             <ion-col class="end-col">
                 <ion-item>
                   <ion-label position="stacked">Complemento</ion-label>
-                  <ion-input formControlName="complement"></ion-input>
+                  <ion-input type="text" formControlName="complement"></ion-input>
                 </ion-item>
             </ion-col>
           </ion-row>
@@ -76,19 +76,19 @@
             <ion-col size="5" class="start-col">
               <ion-item>
                 <ion-label position="stacked">CEP *</ion-label>
-                <ion-input formControlName="zipCode" [brmasker]="{form: userForm.get('zipCode'), mask:'00.000-000', len:10}" maxlength="10"></ion-input>
+                <ion-input type="text" formControlName="zipCode" [brmasker]="{form: userForm.get('zipCode'), mask:'00.000-000', len:10}" maxlength="10"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col size="4" class="start-col">
               <ion-item>
                 <ion-label position="stacked">Cidade *</ion-label>
-                <ion-input formControlName="city"></ion-input>
+                <ion-input type="text" formControlName="city"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col class="end-col">
               <ion-item>
                 <ion-label position="stacked">UF *</ion-label>
-                <ion-input formControlName="uf" maxlength="2"></ion-input>
+                <ion-input type="text" formControlName="uf" maxlength="2"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -96,13 +96,13 @@
             <ion-col class="start-col">
               <ion-item>
                 <ion-label position="stacked">Tel. Comercial *</ion-label>
-                <ion-input type="text" formControlName="phone" [brmasker]="{form: userForm.get('phone'), phone: true, len: 10}" maxlength="14"></ion-input>
+                <ion-input type="tel" formControlName="phone" [brmasker]="{form: userForm.get('phone'), phone: true, len: 10}" maxlength="14"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col class="end-col">
               <ion-item>
                 <ion-label position="stacked">Tel. Celular</ion-label>
-                <ion-input formControlName="cellphone" [brmasker]="{form: userForm.get('cellphone'), phone: true, len: 11}" maxlength="15"></ion-input>
+                <ion-input type="tel" formControlName="cellphone" [brmasker]="{form: userForm.get('cellphone'), phone: true, len: 11}" maxlength="15"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
