@@ -1,1 +1,66 @@
+ion-title {
+    font-size: 15px;
+    font-weight: bold;
+}
 
+.textInfo {
+    font-size: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.checkbox-col {
+    padding-top: 0;
+    margin-bottom: 10px;
+}
+
+.checkbox-item {
+    --background: #3b4781;
+}
+
+ion-checkbox {
+    --border-color: #f4f5f8;
+}
+
+.name-col {
+    padding-bottom: 0;
+}
+
+ion-card-content {
+    padding: 5px;
+}
+
+ion-button {
+    --border-radius: 2px;
+}
+
+ion-item {
+    margin-bottom: 5px;
+}
+
+ion-grid, .end-col {
+    padding: 0;
+}
+
+.start-col {
+    padding-left: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.labelCheckbox {
+    font-size: 12px;
+}
+
+ion-checkbox {
+    margin-right: 10px;
+}
+
+ion-button {
+    font-size: 12px;
+}
+
+.requiredMessage {
+    margin-top: 5px;
+    font-size: 12px;
+}
